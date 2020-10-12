@@ -68,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "digitex-trade:build"
+            "browserTarget": "digitex-trade:build",
+            "port": 4205
           },
           "configurations": {
             "production": {

@@ -9,11 +9,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {HttpClientModule} from '@angular/common/http';
 import { TradeComponent } from './pages/trade/trade.component';
 import {MatListModule} from '@angular/material/list';
+import { TemplateComponent } from './pages/template/template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TradeComponent
+    TradeComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,
