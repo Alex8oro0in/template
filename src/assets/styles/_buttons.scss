@@ -1,0 +1,10 @@
+@import "~src/assets/styles/variables";
+.btn-dark {
+  color: $color-primary;
+  background-color: inherit;
+  border: none;
+  border-radius: 2px;
+}
+.btn-border {
+  border: 1px solid $border-color;
+}

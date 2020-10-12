@@ -1,0 +1,23 @@
+@import "~src/assets/styles/variables";
+.trade {
+  max-width: 250px;
+  height: 95vh;
+  background: $background-secondary;
+  color: $color-secondary;
+  .mat-list-base .mat-list-option {
+    color: $color-secondary;
+    &:hover {
+      background-color: $background-third;
+    }
+    &:active {
+      color: $color-primary;
+      background-color: $background-third;
+      border-left: 1px solid $color-blue;
+    }
+  }
+  .mat-list-single-selected-option {
+    color: $color-primary !important;
+    background-color: $background-third;
+    border-left: 1px solid $color-blue;
+  }
+}
