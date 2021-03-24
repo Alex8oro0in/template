@@ -137,3 +137,11 @@ $green-mute-color: #313131;
     border-radius: 8px 8px 8px 8px;
   }
 }
+.display {
+  &__none {
+    display: none;
+  }
+  &__unvisible {
+    visibility: hidden;
+  }
+}

@@ -1,4 +1,4 @@
-<div class="card-body" style="padding: 10px 50px 50px 50px">
+<div class="card-body" style="padding: 10px">
   <!-- Table -->
   <div class="txt-11 txt-bold mb-1">Table columns</div>
   <!-- Check Row -->
@@ -25,7 +25,7 @@
         <span class="txt-11">{{i[0].title}}</span>
       </label>
       <img style="cursor: pointer" [class.display__none]="i.length === 1"
-           src='/assets/images/chgroup.svg'  (click)="openCheckGroup($event, checkgroup, j)">
+           src='/assets/images/chgroup.svg'  (click)="openCheckGroup($event, checkgroup, j)" height="15" width="15">
     </div>
   </div>
   <!-- -->

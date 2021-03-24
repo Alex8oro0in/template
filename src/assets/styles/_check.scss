@@ -1,13 +1,36 @@
 .check {
+  // box sizes
+  $width: 18px;
+  $height: $width;
+  $switchWidth: 40px;
+  $switchHeight: 20px;
+  $switchOffset: 50px;
+  $check-font-size: $width - 3px;
   // box border radius
-  $box-border-radius: 4px;
+  $box-border-radius: 2px;
+  // box position and content position
+  $outerX: 2px;
+  $outerY: $outerX;
+  $offset: $width + 8px;
   // box colors
-  $box-color: #FFFFFF;
+  $box-color: #00ce7d;
   $box-background-color: #FFFFFF;
-  $box-border-color-checked: #38b1dc;
-  $box-border-color-hover: #38b1dc;
-  $background-color-checked: #38b1dc;
+  $box-border-color: #959595;
+  $box-border-color-checked: #959595;
+  $box-border-color-hover: #00ce7d;
+  $background-color-checked: #FFFFFF;
+  $border-color-disabled: #313131;
+  $background-color-disabled: #313131;
+  $color-disabled: #dcdcdc;
 
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-left: $offset;
+  font-size: inherit;
+  line-height: 1;
+  cursor: pointer;
+  min-height: $height;
   &:hover &__input:not(:disabled) {
     & + .check__box {
       &::before {
@@ -18,32 +41,122 @@
 
   &__box {
     color: $box-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: #{-$outerY} #{-$outerX};
+    padding: $outerY $outerX;
+    transition: all .3s ease;
+
     &::before {
+      content: '';
+      display: inline-block;
+      width: $width;
+      height: $height;
+      border: 1px solid $box-border-color;
       border-radius: $box-border-radius;
+      background-color: transparent;
+      transition: all .3s ease;
     }
   }
 
   &__input {
+    position: absolute;
+    appearance: none;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
     .check.switch > & {
       & + .check__box {
         &::before {
+          background-position: left 11px center;
+          background-repeat: no-repeat;
+          border: none;
           background-color: rgba($background-color-checked, .2);
+          width: $switchWidth;
+          height: $switchHeight;
+          transition: all .3s ease;
         }
+
         &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          opacity: 1;
+          top: $outerY + ($switchHeight - 14) / 2;
+          left: $outerX + 3px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
           background-color: $box-background-color;
+          transition: all .3s ease;
         }
       }
     }
+    &[type=checkbox] {
+      & + .check__box {
+        & > .check__icon {
+          line-height: 0;
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: opacity .3s ease;
+        }
+      }
+    }
+
+
     &:checked {
       & + .check__box {
         &::before {
-          padding-bottom: 2px;
+          content: '\2713';
+          font-weight: 900;
+          font-size: $check-font-size;
           text-align: center;
+          padding-top: 1px;
           border-color: $box-border-color-checked !important;
           border-radius: $box-border-radius;
           background-color: $background-color-checked !important;
         }
+        &::after {
+          opacity: 1;
+        }
+
+        & > .check__icon {
+          opacity: 1;
+        }
       }
     }
+    &:disabled {
+      &:not(:checked) {
+        & + .check__box {
+          color: rgba($color-disabled, .5);
+        }
+      }
+      & + .check__box {
+        &::before {
+          border-color: $border-color-disabled !important;
+          background-color: rgba($background-color-disabled, .3);
+        }
+      }
+      &:checked {
+        & + .check__box {
+          opacity: .5;
+          &::before {
+            border-color: $box-border-color-checked !important;
+            background-color: rgba($background-color-disabled, .5) !important;
+          }
+        }
+      }
+    }
+  }
+}
+.withdrawal-check {
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #a6a6a6;
   }
 }
