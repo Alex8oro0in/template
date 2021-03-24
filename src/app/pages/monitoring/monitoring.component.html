@@ -1,1 +1,99 @@
-<p>monitoring works!</p>
+<div class="main-fs mx-auto">
+  <div class="card card-fs border-8 mx-auto">
+    <div class="card-header w-100 d-flex justify-content-between">
+      <div class="txt-16">Bot list</div>
+    </div>
+    <div class="card-body w-100" style="padding: 20px 30px 20px 30px">
+      <div class="div-allotted px-3 py-4">
+        <p class="txt-mute txt-13 p-0 mb-1">Trader ID (you can enter a range of IDs with a hyphen)</p>
+        <div class="d-flex mb-4">
+          <input type="text" class="form-control w-60" placeholder="bc01189-ui1798067-29828w — bc01189-ui1798067-29828w">
+          <button type="button" class="btn btn-outline-success ml-3 txt-18"
+                  style="width: 71px; height: 36px; padding-bottom: 7px; padding-top: 5px ">+</button>
+          <button type="button" class="btn btn-outline-danger ml-3 txt-18"
+                  style="width: 71px; height: 36px; padding-bottom: 7px; padding-top: 5px ">-</button>
+          <button type="button" class="btn btn-outline-secondary ml-3 txt-18"
+                  style="width: 71px; height: 36px; padding-bottom: 8px; padding-top: 3px ">
+            <img src="/assets/images/basket.svg"></button>
+        </div>
+        <hr class="w-100 mx-2">
+        <div class="d-flex">
+          <div>
+            <p class="txt-13 txt-mute mb-1">Email</p>
+            <input type="text" class="form-control txt-14" placeholder="mail@mail.com" style="height: 36px">
+          </div>
+          <div>
+            <p class="txt-13 txt-mute ml-4 mb-1">IDs of the owner of this mail</p>
+            <select class="custom-select txt-14 txt-mute ml-4" style="height: 36px; background-color: #dcdcdc">
+              <option>bc01189-ui1798067-29828w — bc01189-ui1798067-29828w</option>
+              <option>bc01189-ui1798067-29828w — bc01189-ui1798067-29828w</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-fs mx-auto">
+  <div class="card card-fs border-8 mx-auto">
+    <div class="card-header w-100 d-flex justify-content-between">
+      <div class="txt-16 mt-2">{{cardTitle1}}</div>
+      <div class="d-flex">
+        <p class="txt-14 text-nowrap mt-2">Market selection</p>
+        <select class="custom-select txt-14 ml-4" style="height: 36px; width: 280px">
+          <option>Main market</option>
+          <option>Market 1</option>
+        </select>
+        <button type="button" class="btn btn-outline-secondary ml-3 mr-4"
+                style="width: 71px; height: 36px; padding-bottom: 8px; padding-top: 3px ">
+          <img src="/assets/images/shape.svg"></button>
+      </div>
+    </div>
+    <app-bot-list-filter [isGraph]="false"
+                         [isTraderData]="traderData1"
+                         [tableColumns]="tableColumn1"
+                         [checksTable]="checksTable1"></app-bot-list-filter>
+  </div>
+</div>
+
+<div class="main-fs mx-auto">
+  <div class="card card-fs border-8 mx-auto">
+    <div class="card-header w-100 d-flex justify-content-between">
+      <div class="txt-16 mt-2">{{cardTitle2}}</div>
+      <div class="d-flex">
+        <div style="padding-top: 10px">
+          <p class="txt-15 pr-2 mb-0">In period</p> </div>
+        <input type="text" name="daterangeInput" style="width: 244px"
+               class="text-muted date-style pl-2"
+               placeholder="{{'2019-10-11 — 2019.10.12'}}"/>
+        <img src='/assets/images/calendar-blue.svg'
+             class="picto"
+             daterangepicker [options]="options"
+             (selected)="selectedDate($event, daterange)">
+      </div>
+    </div>
+    <app-bot-list-filter [isGraph]="true"
+                         [isTraderData]="traderData2"
+                         [tableColumns]="tableColumn2"
+                         [checksTable]="checksTable2"></app-bot-list-filter>
+  </div>
+</div>
+
+<div class="main-fs mx-auto">
+  <div class="card card-fs border-8 mx-auto">
+    <div class="card-header">
+      <div class="txt-16 mt-2">{{cardTitle3}}</div>
+    </div>
+    <div class="card-body" style="padding: 10px 50px 50px 50px">
+      <app-graph [dataG]="dataChart"></app-graph>
+      <div class="d-flex">
+        <div class="square-15 back-blue mr-1 ml-5" style="margin: 4px 0 0 0"></div>
+        <div class="mr-5">{{dataChart.title[0]}}</div>
+        <div class="square-15 back-purple mr-1 ml-4" style="margin-top: 4px"></div>
+        <div>{{dataChart.title[1]}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
