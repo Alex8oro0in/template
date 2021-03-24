@@ -12,7 +12,7 @@ import { BotListFilterComponent } from './pages/bot-list-filter/bot-list-filter.
 import { MonitoringComponent } from './pages/monitoring/monitoring.component';
 import { GraphComponent } from './pages/graph/graph.component';
 import {NgApexchartsModule} from "ng-apexcharts";
-import {MatDialogModule} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
@@ -44,7 +44,12 @@ import {Daterangepicker} from "ng2-daterangepicker";
     MatSortModule,
     Daterangepicker
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

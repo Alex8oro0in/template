@@ -33,7 +33,7 @@ export class BotListFilterComponent implements OnInit {
   titleSearch = '';
   activeCheck = 0;
   isTypeNumber = false;
-// Для отрисовки сетки в наименовании группы чеков (недоделано)
+// Для отрисовки сетки в наименовании группы чеков (TO DO)
   isGrid: number[] = [];
   constructor(public checksGroup: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any) {}
   ngOnInit(): void {
