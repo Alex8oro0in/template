@@ -1,0 +1,57 @@
+.bot-filter-table {
+  width: 978px;
+  height: 450px;
+  overflow: auto;
+  .column-1 {
+    min-width: 230px;
+  }
+  .column-all {
+    min-width: 150px;
+  }
+  .select {
+    width: 160px;
+    height: 30px;
+    padding: 0 0 0 5px;
+  }
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0BE4F1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #056D88;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #023F55;
+  }
+}
+.check {
+  padding-left: 20px;
+}
+.check__box::before {
+  width: 15px;
+  height: 15px;
+}
+.check__input:checked + .check__box::before {
+  padding-top: 0;
+  font-size: 14px;
+}
+
+.backdrop {
+  opacity: 0;
+}
+
+.div-j {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  label {
+    margin-bottom: 0;
+  }
+}
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+

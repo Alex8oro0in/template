@@ -7,15 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InlineSVGModule} from 'ng-inline-svg';
 import {MatTabsModule} from '@angular/material/tabs';
 import {HttpClientModule} from '@angular/common/http';
-import { TradeComponent } from './pages/trade/trade.component';
 import {MatListModule} from '@angular/material/list';
-import { TemplateComponent } from './pages/template/template.component';
+import { BotListFilterComponent } from './pages/bot-list-filter/bot-list-filter.component';
+import { TraderGraphComponent } from './pages/trader-graph/trader-graph.component';
+import { MonitoringComponent } from './pages/monitoring/monitoring.component';
+import { GraphComponent } from './pages/graph/graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TradeComponent,
-    TemplateComponent
+    BotListFilterComponent,
+    TraderGraphComponent,
+    MonitoringComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,

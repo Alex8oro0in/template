@@ -1,0 +1,142 @@
+<div class="card-body" style="padding: 10px 50px 50px 50px">
+  <!-- Table -->
+  <div class="txt-11 txt-bold mb-1">Table columns</div>
+  <!-- Check Row -->
+  <div class="d-flex w-100 justify-content-between mb-2">
+    <div>
+      <label class="check my-auto">
+        <input class="check__input" type="checkbox" [checked]="allCheck" (change)="setCheck(-1)">
+        <span class="check__box">
+                                <span class="check__icon"
+                                      aria-label="check">
+                                </span>
+                            </span>
+        <span class="txt-11">All check/uncheck</span>
+      </label>
+    </div>
+    <div class="d-flex" *ngFor="let i of checksTable; let j = index">
+      <label class="check my-auto mr-1">
+        <input class="check__input" type="checkbox" [checked]="i[0].isCheck" (change)="setCheck(j)">
+        <span class="check__box">
+                                <span class="check__icon"
+                                      aria-label="check">
+                                </span>
+                            </span>
+        <span class="txt-11">{{i[0].title}}</span>
+      </label>
+      <img style="cursor: pointer" [class.display__none]="i.length === 1"
+           src='/assets/images/chgroup.svg'  (click)="openCheckGroup($event, checkgroup, j)">
+    </div>
+  </div>
+  <!-- -->
+  <div class="w-100 d-flex bot-filter-table">
+    <table mat-table [dataSource]="traderData" class="w-100" style="border-collapse: unset" matSort matSortActive="id" matSortDirection="asc">
+      <ng-container *ngFor="let i of tableColumns; let j = index" [matColumnDef]="i.key" [sticky]="j === 0">
+        <th mat-header-cell *matHeaderCellDef  [class.display__none]="!i.check">
+          <div [class.column-1]="i.key === 'id'" [class.column-all]="i.key !== 'id'">
+            <div  [class.b-1-table]="isGrid[j] === 1"
+                  [class.b-3-table]="isGrid[j] === 3"
+                  [class.b-4-table]="isGrid[j] === 4"
+                  [class.b-t-table]="isGrid[j] === 2">
+              <div [class.display__unvisible]="i.group !== 1"
+                   class="py-2 txt-13">{{i.title}}</div>
+            </div>
+            <div class="b-r-table py-2 d-flex" [class.b-t-table]="i.key !== 'id'" [class.text-center]="i.key !== 'id'">
+              <div class="txt-13 txt-mute b-b-dashet-table cursor-pointer" style="width: fit-content"
+                   [class.ml-auto]="i.key !== 'id'"
+                   (click)="openFilter($event, selection, j)">{{ i.header }}</div>
+              <div mat-sort-header class="mt-1" [class.mr-auto]="i.key !== 'id'"></div></div>
+          </div>
+        </th>
+        <td mat-cell  *matCellDef="let element" class="txt-16 b-r-table" [class.display__none]="!i.check">
+          <div  (click)="showGraph($event, isgraph, j)"
+                [class.cursor-pointer]="isGraph"
+                [class.text-center]="i.key !== 'id'"
+                [class.txt-with-dgtx]="i.isDGTX"
+                [class.column-1]="i.key === 'id'"
+                [class.column-all]="i.key !== 'id'">{{ i.cell(element) }}</div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true" style="height: 27px"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay; let jj = index"></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- Modal group checks -->
+<ng-template #checkgroup >
+  <mat-dialog-content panelClass="modal-check" >
+    <div style="width: 280px">
+      <div class="div-j m-2">
+        <div *ngFor="let i of checksTable[activeCheck]; let j = index" style="width: 125px" [class.display__none]="j === 0">
+          <label class="check  mr-1">
+            <input class="check__input" type="checkbox" [checked]="i.isCheck" (change)="setCheckGroup(j)">
+            <span class="check__box">
+                                <span class="check__icon"
+                                      aria-label="check">
+                                </span>
+                            </span>
+            <span class="txt-10">{{i.title}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</ng-template>
+
+<!-- Modal Select Value -->
+<ng-template #selection >
+  <mat-dialog-content panelClass="modal-check" >
+    <div style="width: 310px">
+      <div class="txt-10 txt-bold ml-2 my-1" *ngIf="isTypeNumber">Volume gap in USD</div>
+      <div class="d-flex m-2 txt-12 number-search" *ngIf="isTypeNumber else istextsearch">
+        <div style="width: 100px; font-size: 12px">
+          <mat-form-field appearance="outline" >
+            <mat-label>Min value</mat-label>
+            <input matInput type="number" placeholder="0" class="example-right-align txt-13">
+          </mat-form-field>
+        </div>
+        <div class="align-baseline txt-mute" style="padding-right: 3px">
+          <hr style="width: 5px; height: 2px; border-top: 1px solid rgba(0,0,0,18.1)">
+        </div>
+        <div style="width: 100px; font-size: 12px">
+          <mat-form-field appearance="outline">
+            <mat-label>Max value</mat-label>
+            <input matInput type="number" placeholder="100000" class="example-right-align txt-13">
+          </mat-form-field>
+        </div>
+        <button mat-stroked-button style="height: 30px; padding-bottom: 5px;
+         line-height: 30px; color: #959595; margin: 3px 3px 0 5px">Filter</button>
+      </div>
+    </div>
+    <ng-template #istextsearch >
+      <div class="txt-10 txt-bold ml-2 my-1 string-search d-flex">
+        <div style="width: 200px; font-size: 12px" class="my-2">
+          <mat-form-field appearance="outline" >
+            <mat-label>{{titleSearch}}</mat-label>
+            <input matInput placeholder="{{titleSearch}}" class="example-right-align txt-13">
+          </mat-form-field>
+        </div>
+        <button mat-stroked-button style="height: 30px; padding-bottom: 5px;
+         line-height: 30px; color: #959595; margin: 11px 3px 0 5px">Filter</button>
+      </div>
+    </ng-template>
+    <div class="d-flex"><div class="txt-10 txt-bold mx-3 mt-2 ">Volume Rank</div>
+      <img class="border-2 square-25 back-blue p-1 m-1 cursor-pointer" src='/assets/images/arrow-b.svg'>
+      <img class="border-2 square-25 p-1 m-1 cursor-pointer" style="background-color: #FFFFFF" src='/assets/images/arrow-t.svg'>
+    </div>
+  </mat-dialog-content>
+</ng-template>
+
+<!-- Modal Graph  -->
+<ng-template #isgraph >
+  <mat-dialog-content panelClass="modal-graph" >
+    <div class="card" style="width: 100%; height: 100%; background-color: #ebf7fb;">
+      <div class="card-header txt-13">Statistic in period</div>
+      <div class="div-j card-body">
+        <app-trader-graph></app-trader-graph>
+      </div>
+    </div>
+  </mat-dialog-content>
+</ng-template>
