@@ -22,3 +22,118 @@
 .mat-body p, .mat-body-1 p, .mat-typography p {
   margin: 0;
 }
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+$main-background: #EFEFEF;
+$card-background: #FFFFFF;
+$mute-color: #959595;
+$base-color: #313131;
+$blue-color: #38B1DC;
+$blue-mute: #38B1DC10;
+$blue-hover: #3778A5;
+$color-border: #DCDCDC;
+$purple-color: #e81212;
+$red-mute-color: #313131;
+$green-mute-color: #313131;
+.main-fs {
+  width: 100%;
+  max-width: 1040px;
+  background-color: $main-background;
+  border-radius: 8px;
+  .div-child {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-right: 1px solid #DCDCDC;
+    width: 166px;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+  .card-fs {
+    min-width: 800px;
+    margin-top: 20px;
+    background-color: $card-background;
+    color: $base-color;
+  }
+  .card-header {
+    background-color: $card-background;
+    border-radius: 8px 8px 0 0;
+  }
+  .card-body {
+    background-color: $card-background;
+    border-radius: 0 0 8px 8px;
+  }
+  .card-allotted {
+    border-radius: 5px;
+    background-color: #38B1DC30;
+  }
+
+  // Date Picker
+  .date-style {
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    height: 38px;
+  }
+}
+.number-search {
+  .mat-form-field-infix {
+    width: 80px !important;
+    padding: 5px !important;
+  }
+}
+.string-search {
+  .mat-form-field-infix {
+    width: 180px !important;
+    padding: 5px !important;
+  }
+}
+.mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+  background-color: #FFFFFF !important;
+
+}
+.mat-form-field-label-wrapper {
+  top: -1.4em !important;
+  padding-top: .84375em !important;
+}
+.div-allotted {
+  border-radius: 3px;
+  background-color: #ebf7fb;
+}
+.picto {
+  position: relative;
+  left: -20px;
+  cursor: pointer;
+}
+.rotate-arrow {
+  transform: rotate(180deg)
+}
+.arrow-box {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  background-color: #efefef;
+  cursor: pointer;
+  place-items: center;
+  border-radius: 3px;
+}
+.body-visible {
+  .card-header {
+    border-radius: 8px 8px 0 0;
+  }
+}
+.body-unvisible {
+  .card-header {
+    border-radius: 8px 8px 8px 8px;
+  }
+}

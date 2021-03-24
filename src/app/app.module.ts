@@ -18,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import {Daterangepicker} from "ng2-daterangepicker";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatSortModule} from "@angular/material/sort";
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    Daterangepicker
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+// Solid Square
+$blue-color: #38B1DC;
+$purple-color: #e81212;
+.back-blue {
+  background-color: $blue-color;
+}
+.square-6 {
+  width: 6px;
+  height: 6px;
+}
+.square-15 {
+  width: 15px;
+  height: 15px;
+}
+.back-purple {
+  background-color: $purple-color;
+}
+.back-red {
+  background-color: rgba(254, 84, 62, 0.1);
+}
+.back-green {
+  background-color: rgba(0, 206, 125, 0.1);
+}
+.mat-sort-header-arrow {
+  color: #38b1dc;
+}
+
+.square-25 {
+  width: 25px;
+  height: 25px;
+}

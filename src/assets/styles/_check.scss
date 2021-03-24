@@ -1,0 +1,49 @@
+.check {
+  // box border radius
+  $box-border-radius: 4px;
+  // box colors
+  $box-color: #FFFFFF;
+  $box-background-color: #FFFFFF;
+  $box-border-color-checked: #38b1dc;
+  $box-border-color-hover: #38b1dc;
+  $background-color-checked: #38b1dc;
+
+  &:hover &__input:not(:disabled) {
+    & + .check__box {
+      &::before {
+        border-color: $box-border-color-hover;
+      }
+    }
+  }
+
+  &__box {
+    color: $box-color;
+    &::before {
+      border-radius: $box-border-radius;
+    }
+  }
+
+  &__input {
+    .check.switch > & {
+      & + .check__box {
+        &::before {
+          background-color: rgba($background-color-checked, .2);
+        }
+        &::after {
+          background-color: $box-background-color;
+        }
+      }
+    }
+    &:checked {
+      & + .check__box {
+        &::before {
+          padding-bottom: 2px;
+          text-align: center;
+          border-color: $box-border-color-checked !important;
+          border-radius: $box-border-radius;
+          background-color: $background-color-checked !important;
+        }
+      }
+    }
+  }
+}
