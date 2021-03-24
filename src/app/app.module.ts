@@ -9,15 +9,20 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {HttpClientModule} from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { BotListFilterComponent } from './pages/bot-list-filter/bot-list-filter.component';
-import { TraderGraphComponent } from './pages/trader-graph/trader-graph.component';
 import { MonitoringComponent } from './pages/monitoring/monitoring.component';
 import { GraphComponent } from './pages/graph/graph.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
     AppComponent,
     BotListFilterComponent,
-    TraderGraphComponent,
     MonitoringComponent,
     GraphComponent,
   ],
@@ -28,7 +33,14 @@ import { GraphComponent } from './pages/graph/graph.component';
     InlineSVGModule,
     HttpClientModule,
     MatTabsModule,
-    MatListModule
+    NgApexchartsModule,
+    MatListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
